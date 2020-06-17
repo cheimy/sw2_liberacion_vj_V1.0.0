@@ -1,7 +1,3 @@
-function checho(){
-    alert("jkgadkjashdjkasd");
+function message(){
+    alert("Prueba");
 }
-/*$('#ingresar').unbind().bind("click", function(e){
-    avoidDoubleClick(e, 2000);
-    alert('hola');
-});*/
