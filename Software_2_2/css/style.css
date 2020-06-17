@@ -1,27 +1,5 @@
-/*Table{  
-      display: table; 
-  }  
-  .Title  
-  {  
-      display: table-caption;  
-      text-align: center;  
-      font-weight: bold;  
-      font-size: larger; 
-  }  
-  .Heading  
-  {  
-      display: table-row;  
-      font-weight: bold;  
-      text-align: center;  
-  }  
-  .Row  
-  {  
-     display: table-row;  
-  } */ 
-
   body {
     background: #fafafa;
-    /*background: linear-gradient(rgb(0, 255, 193), rgb(242, 242, 242) 50%, rgb(0, 0, 0)) repeat scroll 0% 0% transparent;*/
     font-family: 'Lora', serif;
     font-style: normal;
     font-weight: 300;
@@ -33,9 +11,7 @@ fieldset{
     border-bottom-color: yellow;
 }
 form{
-   /* margin: 0 auto; 
-    width:250px;*/
-    
+
       width  : 300px;
       height : 200px;
       margin : 0 auto;    
