@@ -1,3 +1,0 @@
-function message(){
-    alert("Prueba");
-}
