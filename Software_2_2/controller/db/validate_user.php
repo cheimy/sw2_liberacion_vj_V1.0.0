@@ -4,7 +4,8 @@ include('connection.php');
 $user=$_POST['user'];
 $pwd=$_POST['pwd'];
 
-$sql = "SELECT id_usr FROM user WHERE usrname = '$user' and pwd = '$pwd'";
+$sql = "SELECT user_id FROM user WHERE username = '$user' and password = '$pwd'";
+echo $sql;
 $result = mysqli_query($conn,$sql);
 $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
 $active = $row['active'];
