@@ -156,7 +156,7 @@ include('db/connection.php');
                     </li>
                     <li class="full-width divider-menu-h"></li>
                     <li class="full-width">
-                        <a href="#!" class="full-width">
+						<a href="products.php" class="full-width">
                             <div class="navLateral-body-cl">
                                 <i class="zmdi zmdi-shopping-cart"></i>
                             </div>
@@ -168,12 +168,12 @@ include('db/connection.php');
                     </li>
                     <li class="full-width divider-menu-h"></li>
                     <li class="full-width">
-                        <a href="#!" class="full-width">
+						<a href="user.php" class="full-width">
                             <div class="navLateral-body-cl">
-                                <i class="zmdi zmdi-truck"></i>
+								<i class="zmdi zmdi-face"></i>
                             </div>
                             <div class="navLateral-body-cr hide-on-tablet">
-                                PROVEEDORES
+								USUARIOS
                             </div>
                             <span class="zmdi zmdi-chevron-left"></span>
                         </a>
@@ -253,7 +253,12 @@ include('db/connection.php');
             </div>
             <div class="mdl-tabs__panel" id="tabListProducts">
                 <div class="mdl-grid">
-                    <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+					<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--8-col-desktop mdl-cell--2-offset-desktop">
+						<div class="full-width panel mdl-shadow--2dp">
+							<div class="full-width panel-tittle bg-success text-center tittles">
+								Lista de productos
+							</div>
+							<div class="full-width panel-content">
                         <form action="#">
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                                 <label class="mdl-button mdl-js-button mdl-button--icon" for="searchProduct">
@@ -265,32 +270,18 @@ include('db/connection.php');
                                 </div>
                             </div>
                         </form>
-                        <?php 
-                            $sql = "SELECT * FROM product";
-                            $result = $conn->query($sql);
-                            if ($row = mysqli_fetch_array($result)){ 
-                                
-                            
-                        ?>
-                        <div class="mdl-card mdl-shadow--2dp full-width product-card">
-                            <div class="mdl-card__title">
-                                <img src="assets/img/fontLogin.jpg" alt="product" class="img-responsive">
-                            </div>
-                            <div class="mdl-card__supporting-text">
-                                <small>Id: <?php echo " ".$row["idproduct"]?></small><br>
-                                <small>Cantidad: <?php echo " ".$row["quantity"]?></small><br>
-                            </div>
-                            <div class="mdl-card__actions mdl-card--border">
-                                 <?php echo " ".$row["name"]?>
-                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-										<i class="zmdi zmdi-more"></i>
-									</button>
-                            </div>
-                        </div>
-                        <?php 
-                        }
-                        ?>
-                    </div>
+								<div class="mdl-list">
+									<div class="mdl-list__item mdl-list__item--two-line">
+										<span class="mdl-list__item-primary-content">
+											<i class="zmdi zmdi-shopping-cart mdl-list__item-avatar"></i>
+											<span>1. Nombre del producto</span>
+											<span class="mdl-list__item-sub-title">Cantidad</span>
+										</span>
+										<a class="mdl-list__item-secondary-action" href="#!"><i class="zmdi zmdi-more"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
                 </div>
             </div>
         </div>
