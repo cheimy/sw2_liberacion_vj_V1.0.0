@@ -55,3 +55,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user`
   MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+  CREATE TABLE `inventario`.`product` (
+  `idproduct` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `price` VARCHAR(45) NULL,
+  `quantity` VARCHAR(45) NULL,
+  `description` VARCHAR(300) NULL,
+  PRIMARY KEY (`idproduct`));
+
