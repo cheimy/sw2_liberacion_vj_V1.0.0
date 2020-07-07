@@ -1,5 +1,5 @@
 <!-- 
-* Copyright 2016 Carlos Eduardo Alfaro Orellana
+* 
 -->
 <?php
 include('db/connection.php');

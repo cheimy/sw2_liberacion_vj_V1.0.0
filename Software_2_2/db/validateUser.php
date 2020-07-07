@@ -14,7 +14,7 @@ if($count == 1) {
     header("Location: ../home.html");
    }else {
     $error = "Your Login Name or Password is invalid";
-    header("Location: ../index.html");
+    header("Location: ../index.php");
     echo $error;
  }
  $conn->close();
