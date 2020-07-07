@@ -1,6 +1,9 @@
 <!-- 
 * Copyright 2016 Carlos Eduardo Alfaro Orellana
 -->
+<?php
+include('db/connection.php');
+?>s
 <!DOCTYPE html>
 <html lang="es">
 
@@ -93,7 +96,7 @@
                     </li>
                     <li class="full-width divider-menu-h"></li>
                     <li class="full-width">
-                        <a href="user.html" class="full-width">
+                        <a href="user.php" class="full-width">
                             <div class="navLateral-body-cl">
                                 <i class="zmdi zmdi-face"></i>
                             </div>
@@ -132,39 +135,39 @@
                                 Nuevo usuario
                             </div>
                             <div class="full-width panel-content">
-                                <form>
+                                <form action="db/insertUser.php" method="post">
                                     <h5 class="text-condensedLight">Información usuario</h5>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="IDUser">
+                                        <input class="mdl-textfield__input" type="number" pattern="-?[0-9]*(\.[0-9]+)?" id="IDUser" name="userid">
                                         <label class="mdl-textfield__label" for="DNIClient">Cédula de ciudadanía</label>
                                         <span class="mdl-textfield__error">Número inválido</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="User">
+                                        <input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="User" name="username">
                                         <label class="mdl-textfield__label" for="NameClient">Usuario</label>
                                         <span class="mdl-textfield__error">Usuario inválido</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="PassUser">
+                                        <input class="mdl-textfield__input" type="text" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" id="PassUser" name="password">
                                         <label class="mdl-textfield__label" for="NameClient">Contraseña</label>
                                         <span class="mdl-textfield__error">Contraseña inválida</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="NameUser">
+                                        <input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="NameUser" name="name">
                                         <label class="mdl-textfield__label" for="NameClient">Nombre</label>
                                         <span class="mdl-textfield__error">Nombre inválido</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="LastNameUser">
+                                        <input class="mdl-textfield__input" type="text" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" id="LastNameUser" name="lastname">
                                         <label class="mdl-textfield__label" for="LastNameClient">Apellido</label>
                                         <span class="mdl-textfield__error">Apellido inválido</span>
                                     </div>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="RoleUser">
                                         <div class="mdl-textfield mdl-js-textfield">
-                                            <select class="mdl-textfield__input">
+                                            <select class="mdl-textfield__input" name="role">
 												<option value="" disabled="" selected="">Seleccione un rol</option>
-												<option value="" id="Admin">Administrador</option>
-												<option value="" id="General">General</option>
+												<option value="1" id="Admin">Administrador</option>
+												<option value="2" id="General">General</option>
 											</select>
                                         </div>
                                     </div>
@@ -200,14 +203,33 @@
                                     </div>
                                 </form>
                                 <div class="mdl-list">
+                                <?php 
+                                    $sql = "SELECT * FROM user";
+                                    $result = $conn->query($sql);
+                                    if ($row = mysqli_fetch_array($result)){
+                                        do { 
+                                ?>
                                     <div class="mdl-list__item mdl-list__item--two-line">
                                         <span class="mdl-list__item-primary-content">
 											<i class="zmdi zmdi-face mdl-list__item-avatar"></i>
-											<span>1. Nombre de usuario</span>
-                                        <span class="mdl-list__item-sub-title">Cédula de ciudadanía</span>
+											<span><?php echo $row["username"]. " - " .$row["name"]?> </span>
+                                        <span class="mdl-list__item-sub-title">Cédula de ciudadanía: <?php echo $row["userid"]?></span>
+                                        <span class="mdl-list__item-sub-title">Rol: 
+                                            <?php 
+                                                if($row["userid"] == 1){
+                                                    echo "Administrador";
+                                                }else{
+                                                    echo "General";
+                                                }
+                                            ?>
+                                            </span>
                                         </span>
                                         <a class="mdl-list__item-secondary-action" href="#!"><i class="zmdi zmdi-more"></i></a>
                                     </div>
+                                <?php
+                                        } while ($row = mysqli_fetch_array($result)); 
+                                    } 
+                                ?>
                                 </div>
                             </div>
                         </div>
