@@ -281,7 +281,7 @@ include('db/connection.php');
 										<span class="mdl-list__item-primary-content">
 											<i class="zmdi zmdi-shopping-cart mdl-list__item-avatar"></i>
 											<span><?php echo $row["idproduct"]. " " .$row["name"]?> </span>
-											<span class="mdl-list__item-sub-title">Cantidad</span>
+											<span class="mdl-list__item-sub-title">Cantidad: <?php echo $row["quantity"]?></span>
 										</span>
 										<a class="mdl-list__item-secondary-action" href="#!"><i class="zmdi zmdi-more"></i></a>
                                     </div>
