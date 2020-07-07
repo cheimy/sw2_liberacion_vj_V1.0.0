@@ -212,11 +212,11 @@ include('db/connection.php');
                                     <div class="mdl-list__item mdl-list__item--two-line">
                                         <span class="mdl-list__item-primary-content">
 											<i class="zmdi zmdi-face mdl-list__item-avatar"></i>
-											<span><?php echo $row["username"]. " - " .$row["name"]?> </span>
+											<span><?php echo $row["username"]. " - " .$row["name"]." ".$row["lastname"]?> </span>
                                         <span class="mdl-list__item-sub-title">Cédula de ciudadanía: <?php echo $row["userid"]?></span>
                                         <span class="mdl-list__item-sub-title">Rol: 
                                             <?php 
-                                                if($row["userid"] == 1){
+                                                if($row["role"] == 1){
                                                     echo "Administrador";
                                                 }else{
                                                     echo "General";
@@ -224,7 +224,7 @@ include('db/connection.php');
                                             ?>
                                             </span>
                                         </span>
-                                        <a class="mdl-list__item-secondary-action" href="#!"><i></i>Eliminar</a>
+                                        <a class="mdl-list__item-secondary-action" href="db/deleteUser.php?id=<?php echo $row["userid"]?>"><i></i>Eliminar</a>
                                     </div>
                                 <?php
                                         } while ($row = mysqli_fetch_array($result)); 
