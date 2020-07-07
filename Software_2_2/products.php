@@ -271,14 +271,24 @@ include('db/connection.php');
                             </div>
                         </form>
 								<div class="mdl-list">
+                                <?php 
+                                    $sql = "SELECT * FROM product";
+                                    $result = $conn->query($sql);
+                                    if ($row = mysqli_fetch_array($result)){
+                                        do { 
+                                ?>
 									<div class="mdl-list__item mdl-list__item--two-line">
 										<span class="mdl-list__item-primary-content">
 											<i class="zmdi zmdi-shopping-cart mdl-list__item-avatar"></i>
-											<span>1. Nombre del producto</span>
+											<span><?php echo $row["idproduct"]. " " .$row["name"]?> </span>
 											<span class="mdl-list__item-sub-title">Cantidad</span>
 										</span>
 										<a class="mdl-list__item-secondary-action" href="#!"><i class="zmdi zmdi-more"></i></a>
-									</div>
+                                    </div>
+                                <?php
+                                 } while ($row = mysqli_fetch_array($result)); 
+                                } 
+                                ?>
 								</div>
 							</div>
 						</div>
