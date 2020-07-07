@@ -283,7 +283,7 @@ include('db/connection.php');
 											<span><?php echo $row["idproduct"]. " " .$row["name"]?> </span>
 											<span class="mdl-list__item-sub-title">Cantidad: <?php echo $row["quantity"]?></span>
 										</span>
-										<a class="mdl-list__item-secondary-action" href="#!"><i class="zmdi zmdi-more"></i></a>
+										<a class="mdl-list__item-secondary-action" href="#!"><i></i>Eliminar</a>
                                     </div>
                                 <?php
                                  } while ($row = mysqli_fetch_array($result)); 
